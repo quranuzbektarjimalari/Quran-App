@@ -1,0 +1,60 @@
+{
+  "name": "quran-tilovati",
+  "productName": "Qur'on tilovati",
+  "version": "1.0.0",
+  "description": "Qur'on tilovati - sahifalar, audio va tarjima",
+  "author": "Qur'on tilovati",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win --x64"
+  },
+  "devDependencies": {
+    "electron": "33.2.0",
+    "electron-builder": "25.1.8"
+  },
+  "build": {
+    "appId": "uz.quran.tilovati",
+    "productName": "Qur'on tilovati",
+    "asar": false,
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "overlays_data.js",
+      "translation.js",
+      "package.json"
+    ],
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Qur'on tilovati",
+      "deleteAppDataOnUninstall": false
+    },
+    "artifactName": "Quran-Tilovati-${version}-${type}.${ext}"
+  }
+}
