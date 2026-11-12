@@ -1,0 +1,42 @@
+{
+  "name": "quron-tilovati",
+  "version": "1.0.0",
+  "description": "Qur'on tilovati - sahifalar, oyat audiolari va tarjima bilan",
+  "main": "main.js",
+  "author": "Qur'on tilovati",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win --publish never"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "uz.qurontilovati.app",
+    "productName": "Quron Tilovati",
+    "asar": false,
+    "files": ["main.js", "package.json", "app/**/*", "build/icon.ico"],
+    "directories": {"output": "dist"},
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        {"target": "nsis", "arch": ["x64"]},
+        {"target": "portable", "arch": ["x64"]}
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "artifactName": "QuronTilovati-Setup-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "QuronTilovati-Portable-${version}.${ext}"
+    }
+  }
+}
